@@ -60,7 +60,7 @@ function userName () {
 
     document.getElementById("user").innerHTML = userName;
 }
-
+userName()
 
 // We start with a button labelled "start" prompting user to start the quiz
 document.getElementById("btn").addEventListener("click", function(){
