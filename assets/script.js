@@ -58,13 +58,6 @@ const QBANK = [
     }
 ];
 
-// We start with a button labelled "start" prompting user to start the quiz
-startButton.addEventListener("click", function () {
-    countDown(5);
-    displayQuestion();
-
-})
-
 
 // User prompted to enter First Name and Last name
 // This data is presented on DOM to add test feel interface.
@@ -120,6 +113,7 @@ function checkAnswer() {
     var result = (QBANK[index].answer == chosenAnswer)
     console.log(result); 
     //If either true or false
+    //increase question index index++ 
     if (result) {
         timer+=5;
         timeText.innerText = "Time: " + timer + " seconds remaining";
@@ -127,14 +121,25 @@ function checkAnswer() {
         timer-=1;
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
-    //increase question index index++
     //displayQuestion()
-}
-
-function nextQuestion () {
     
 }
 
+
+function nextQuestion () {
+    nextQuestion = QBANK(index) +=1
+    console.log(nextQuestion)
+}
+
+    
+
+
+// We start with a button labelled "start" prompting user to start the quiz
+document.getElementById("btn").addEventListener("click", function () {
+    countDown(5);
+    displayQuestion();
+
+})
 // display the questions, the first question!!!!
 // use var for questions or array or object
 // then display on the page
