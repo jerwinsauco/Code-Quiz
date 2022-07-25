@@ -3,6 +3,7 @@
 //QBANK[1].choices.b 
 var questionText = document.getElementById("questionText")
 var choiceText = document.getElementById("choicesDiv")
+var timeText = document.getElementById("timer")
 var index = 0;
 
 const QBANK = [
@@ -107,7 +108,14 @@ function displayQuestion() {
 function checkAnswer() {
     var chosenAnswer = this.getAttribute('class')
     //compare answer
+    var result = (QBANK[index].answer == chosenAnswer)
+    console.log(result); 
     //If either true or false
+    if (result) {
+        countDown+=1000;
+    } else {
+        countDown-=1000;
+    }
     //increase question index index++
         //displayQuestion()
 }
