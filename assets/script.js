@@ -71,12 +71,13 @@ function userName() {
 }
 userName()
 
+var timer = 5;
 // Timer starts after pressing btn
 // count down timer shown on right upper corner of page
-function countDown(i) {
+function countDown() {
     var timeUser = setInterval(function () {
-        document.getElementById("timer").innerHTML = "Time: " + i + " seconds remaining";
-        i-- || clearInterval(timeUser);  //if i is 0, then stop the interval
+        timeText.innerHTML = "Time: " + timer + " seconds remaining";
+        timer-- || clearInterval(timeUser);  //if i is 0, then stop the interval
     }, 1000);
 
 }
@@ -112,9 +113,11 @@ function checkAnswer() {
     console.log(result); 
     //If either true or false
     if (result) {
-        countDown+=1000;
+        timer+=5;
+        timeText.innerText = "Time: " + timer + " seconds remaining";
     } else {
-        countDown-=1000;
+        timer-=1;
+        timeText.innerText = "Time: " + timer + " seconds remaining";
     }
     //increase question index index++
         //displayQuestion()
