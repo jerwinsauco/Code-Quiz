@@ -127,7 +127,7 @@ function checkAnswer() {
 
 
 function nextQuestion () {
-    nextQuestion = QBANK(index) +=1
+    var nextQuestion = QBANK(index) +=1
     console.log(nextQuestion)
 }
 
