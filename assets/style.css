@@ -4,9 +4,17 @@
     flex: 1 1 100%;
 }
 
+.userLabel {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content:center;
+   padding: 5px 0px;
+   margin: 10px;
+}
+    
 #user {
-    padding: 5px 0px;
-    margin: 50px;
+    font-weight: bolder;
 }
 
 #timer {
