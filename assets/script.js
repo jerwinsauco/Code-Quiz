@@ -1,6 +1,6 @@
 // const for question bank as this will be constant all thoughout the program. 
-// increases integrity of the question bank as this will not be altered thourhgout the code!
-//QBANK[1].choices.b 
+// increases integrity of the question bank as this will not be altered throughout the code!
+
 var questionText = document.getElementById("questionText")
 var choiceText = document.getElementById("choicesDiv")
 var timeText = document.getElementById("timer")
@@ -57,6 +57,14 @@ const QBANK = [
         answer: "d"
     }
 ];
+
+// We start with a button labelled "start" prompting user to start the quiz
+startButton.addEventListener("click", function () {
+    countDown(5);
+    displayQuestion();
+
+})
+
 
 // User prompted to enter First Name and Last name
 // This data is presented on DOM to add test feel interface.
@@ -120,19 +128,12 @@ function checkAnswer() {
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
     //increase question index index++
-        //displayQuestion()
+    //displayQuestion()
 }
 
-// We start with a button labelled "start" prompting user to start the quiz
-document.getElementById("btn").addEventListener("click", function () {
-    countDown(5);
-    displayQuestion();
-
-    // insert for loop here + 
-    // setTimeout to incremenet/decrement 
-
-})
-
+function nextQuestion () {
+    
+}
 
 // display the questions, the first question!!!!
 // use var for questions or array or object
