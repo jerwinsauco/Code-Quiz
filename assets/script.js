@@ -5,6 +5,8 @@ var questionText = document.getElementById("questionText")
 var choiceText = document.getElementById("choicesDiv")
 var timeText = document.getElementById("timer")
 var index = 0;
+var record = document.querySelector(".record")
+var localRecord = JSON.parse(localStorage.getItem('leaderBoard')) || [];
 
 const QBANK = [
     {
@@ -58,17 +60,18 @@ const QBANK = [
     }
 ];
 
-
+var timeUser;
+var fullName;
 // User prompted to enter First Name and Last name
 // This data is presented on DOM to add test feel interface.
 function userName() {
     var firstName = window.prompt("Enter First Name:");
     var lastName = window.prompt("Enter your Last Name:");
-    var userName = (firstName + " " + lastName);
+    fullName = (firstName + " " + lastName);
 
     // insert an if statement: user cannot enter number as name
 
-    document.getElementById("user").innerHTML = userName;
+    document.getElementById("user").innerHTML = fullName;
 }
 userName()
 
@@ -76,9 +79,13 @@ var timer = 5;
 // Timer starts after pressing btn
 // count down timer shown on right upper corner of page
 function countDown() {
-    var timeUser = setInterval(function () {
+    timeUser = setInterval(function () {
+        timer--;
         timeText.innerHTML = "Time: " + timer + " seconds remaining";
-        timer-- || clearInterval(timeUser);  //if i is 0, then stop the interval
+        //if i is 0, then stop the interval
+        if (timer <= 0) {
+            endQuiz();
+        }
     }, 1000);
 
 }
@@ -89,7 +96,7 @@ function displayQuestion() {
     console.log(question)
     console.log("HEYYY")
     questionText.textContent = question
-    //choiceText.textContent = 
+    choiceText.textContent = "";
     Object.entries(choices).forEach(([key, val]) => {
         console.log(key); // the name of the current key.
         console.log(val); // the value of the current key.
@@ -103,31 +110,55 @@ function displayQuestion() {
         choiceText.appendChild(btn)
         //click on an answer
         btn.onclick = checkAnswer;
-           
+
     });
 
+}
+
+
+function endQuiz() {
+    clearInterval(timeUser);
+    questionText.textContent = "";
+    choiceText.textContent = "";
+    var newRecord = {
+        user: fullName,
+        time: timer
+    }
+    localRecord.push(newRecord)
+    //save user and time to local storage
+    localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
+
+    // need to present information board
 }
 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute('class')
     //compare answer
     var result = (QBANK[index].answer == chosenAnswer)
-    console.log(result); 
+    console.log(result);
     //If either true or false
     //increase question index index++ 
     if (result) {
-        timer+=5;
+        timer += 5;
         timeText.innerText = "Time: " + timer + " seconds remaining";
     } else {
-        timer-=1;
+        timer--;
+        if (timer < 0) {
+            timer = 0;
+        }
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
-    index +=1
-    displayQuestion()
+
+    if (index == QBANK.length) {
+        endQuiz()
+    } else {
+        index++;
+        displayQuestion()
+    }
 }
 
 
-    
+
 
 
 // We start with a button labelled "start" prompting user to start the quiz
