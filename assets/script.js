@@ -103,8 +103,9 @@ function displayQuestion() {
         choiceText.appendChild(btn)
         //click on an answer
         btn.onclick = checkAnswer;
-        
+           
     });
+
 }
 
 function checkAnswer() {
@@ -121,15 +122,10 @@ function checkAnswer() {
         timer-=1;
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
-    //displayQuestion()
-    
+    index +=1
+    displayQuestion()
 }
 
-
-function nextQuestion () {
-    var nextQuestion = QBANK(index) +=1
-    console.log(nextQuestion)
-}
 
     
 
