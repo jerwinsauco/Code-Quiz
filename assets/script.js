@@ -127,8 +127,14 @@ function endQuiz() {
     localRecord.push(newRecord)
     //save user and time to local storage
     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
+    
+    record.textContent = "Your Score is xxx"
+}
 
-    // need to present information board
+// calculate or add correct answers
+
+function showLeaderBoard() {
+    
 }
 
 function checkAnswer() {
