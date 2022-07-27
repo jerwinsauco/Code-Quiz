@@ -4,6 +4,7 @@
 var questionText = document.getElementById("questionText")
 var choiceText = document.getElementById("choicesDiv")
 var timeText = document.getElementById("timer")
+var startButton = document.getElementById("btn")
 var index = 0;
 var record = document.querySelector(".record")
 var localRecord = JSON.parse(localStorage.getItem('leaderBoard')) || [];
@@ -82,7 +83,7 @@ function countDown() {
     timeUser = setInterval(function () {
         timer--;
         timeText.innerHTML = "Time: " + timer + " seconds remaining";
-        //if i is 0, then stop the interval
+        // if i is 0, then stop the interval
         if (timer <= 0) {
             endQuiz();
         }
@@ -91,6 +92,7 @@ function countDown() {
 }
 
 function displayQuestion() {
+    console.log(QBANK[index].prompt)
     var question = QBANK[index].prompt;
     var choices = QBANK[index].choices;
     console.log(question)
@@ -128,14 +130,18 @@ function endQuiz() {
     //save user and time to local storage
     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
     
-    record.textContent = "Your Score is xxx"
+    record.textContent = "Your Score is..."
 }
 
 // calculate or add correct answers
 
-function showLeaderBoard() {
-    
-}
+// function showLeaderBoard() {
+//     console.log("Hi")
+//     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
+//     console.log(leaderBoard)
+//     record.textContent = leaderBoard[0].user
+// }
+// showLeaderBoard()
 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute('class')
@@ -154,21 +160,22 @@ function checkAnswer() {
         }
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
-
-    if (index == QBANK.length) {
+    if (index == QBANK.length) {  
         endQuiz()
+        startButton.setAttribute("hidden")
     } else {
         index++;
         displayQuestion()
     }
-}
+}  
+
 
 
 
 
 
 // We start with a button labelled "start" prompting user to start the quiz
-document.getElementById("btn").addEventListener("click", function () {
+startButton.addEventListener("click", function () {
     countDown(5);
     displayQuestion();
 
@@ -185,4 +192,4 @@ document.getElementById("btn").addEventListener("click", function () {
 // console.time()
 
 // setTimeout is to provide elapse time value
-// setTimeout()
+// setTimeout(
