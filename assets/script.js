@@ -86,6 +86,7 @@ function countDown() {
         // if i is 0, then stop the interval
         if (timer <= 0) {
             endQuiz();
+            showLeaderBoard()
         }
     }, 1000);
 
@@ -129,19 +130,19 @@ function endQuiz() {
     localRecord.push(newRecord)
     //save user and time to local storage
     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
-    
-    record.textContent = "Your Score is..."
+
+    record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
+    record.setAttribute.c
 }
 
 // calculate or add correct answers
 
-// function showLeaderBoard() {
-//     console.log("Hi")
-//     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
-//     console.log(leaderBoard)
-//     record.textContent = leaderBoard[0].user
-// }
-// showLeaderBoard()
+function showLeaderBoard() {
+    console.log("Hi")
+    var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
+    console.log(leaderBoard)
+    record.textContent = leaderBoard[let i = 0; i < leaderBoard.length; i++]
+}
 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute('class')
@@ -160,14 +161,14 @@ function checkAnswer() {
         }
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
-    if (index == QBANK.length) {  
+    if (index == QBANK.length) {
         endQuiz()
-        startButton.setAttribute("hidden")
+        showLeaderBoard()
     } else {
         index++;
         displayQuestion()
     }
-}  
+}
 
 
 
@@ -176,6 +177,7 @@ function checkAnswer() {
 
 // We start with a button labelled "start" prompting user to start the quiz
 startButton.addEventListener("click", function () {
+    startButton.setAttribute("hidden", true)
     countDown(5);
     displayQuestion();
 
