@@ -123,6 +123,10 @@ function endQuiz() {
     clearInterval(timeUser);
     questionText.textContent = "";
     choiceText.textContent = "";
+}
+
+function showLeaderBoard() {
+    var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
     var newRecord = {
         user: fullName,
         time: timer
@@ -130,18 +134,9 @@ function endQuiz() {
     localRecord.push(newRecord)
     //save user and time to local storage
     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
-
     record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
-    // record.setAttribute.c
-}
-
-// calculate or add correct answers
-
-function showLeaderBoard() {
-    console.log("Hi")
-    var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
-    console.log(leaderBoard)
     var runningString = "";
+    
     for (var i = 0; i < leaderBoard.length; i ++) {
         runningString += leaderBoard.user + " " + leaderBoard.time
     }
