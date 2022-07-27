@@ -156,7 +156,6 @@ function storeScore(event) {
     updateStoredLeaderboard(leaderBoardItem);
 
     // hide question card, display the leaderboard
-
     renderLeaderboard();
 
 }
@@ -181,25 +180,41 @@ function getLeaderboard() {
     return leaderboardArray;
 }
 
+// display leaderboard on leaderboard card
+function renderLeaderboard() {
+    let sortedLeaderboardArray = sortLeaderboard();
+    const highscoreList = document.querySelector("#highscore-list");
+    highscoreList.innerHTML = "";
+    for (let i = 0; i < sortedLeaderboardArray.length; i++) {
+        let leaderboardEntry = sortedLeaderboardArray[i];
+        let newListItem = document.createElement("li");
+        newListItem.textContent = 
+            leaderboardEntry.initials + " - " + leaderboardEntry.score;
+        highscoreList.append(newListItem);
 
-
-function showLeaderBoard() {
-    var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
-    var newRecord = {
-        user: fullName,
-        time: timer
     }
-    localRecord.push(newRecord)
-    //save user and time to local storage
-    localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
-    record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
-    var runningString = "";
-
-    for (var i = 0; i < leaderBoard.length; i++) {
-        runningString += leaderBoard.user + " " + leaderBoard.time
-    }
-    console.log(runningString, "i am here!")
 }
+
+
+
+
+// function showLeaderBoard() {
+//     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
+//     var newRecord = {
+//         user: fullName,
+//         time: timer
+//     }
+//     localRecord.push(newRecord)
+//     //save user and time to local storage
+//     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
+//     record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
+//     var runningString = "";
+
+//     for (var i = 0; i < leaderBoard.length; i++) {
+//         runningString += leaderBoard.user + " " + leaderBoard.time
+//     }
+//     console.log(runningString, "i am here!")
+// }
 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute('class')
