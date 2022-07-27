@@ -132,7 +132,7 @@ function endQuiz() {
     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
 
     record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
-    record.setAttribute.c
+    // record.setAttribute.c
 }
 
 // calculate or add correct answers
@@ -141,7 +141,11 @@ function showLeaderBoard() {
     console.log("Hi")
     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
     console.log(leaderBoard)
-    record.textContent = leaderBoard[let i = 0; i < leaderBoard.length; i++]
+    var runningString = "";
+    for (var i = 0; i < leaderBoard.length; i ++) {
+        runningString += leaderBoard.user + " " + leaderBoard.time
+    }
+    console.log(runningString, "i am here!")
 }
 
 function checkAnswer() {
