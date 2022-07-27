@@ -119,11 +119,69 @@ function displayQuestion() {
 }
 
 
+// function endQuiz() {
+//     clearInterval(timeUser);
+//     questionText.textContent = "";
+//     choiceText.textContent = "";
+// }
+
 function endQuiz() {
     clearInterval(timeUser);
     questionText.textContent = "";
     choiceText.textContent = "";
+    score.textContent = time;
 }
+
+const submitButton = document.querySelector("#submit-button");
+const inputElement = document.querySelector("#initials");
+
+submitButton.addEventListener("click", storeScore);
+
+function storeScore(event) {
+    event.preventDefault();
+    event.preventDefault();
+
+    // check for input
+    if (!inputElement.value) {
+        alert("Please enter your initials before pressing submit!");
+        return;
+    }
+
+    // store score and initials in an object
+    let leaderBoardItem = {
+        initials: inputElement.value,
+        score: time,
+    };
+
+    updateStoredLeaderboard(leaderBoardItem);
+
+    // hide question card, display the leaderboard
+
+    renderLeaderboard();
+
+}
+
+function updateStoredLeaderboard(leaderBoardItem) {
+    let leaderBoardArray = getLeaderboard();
+
+    // append new leaderboard item to leaderboard array
+    leaderBoardArray.push(leaderBoardItem);
+    localStorage.setItem("leaderboardArray", JSON.stringify(leaderboardArray));
+}
+
+// get "leaderBoardArray" from local storage (if it exists) and pasre it into a javascript object using JSON.parse
+function getLeaderboard() {
+    let storedLeaderboard = localStorage.getItem("leaderboardArray");
+    if (storedLeaderboard !== null) {
+        let leaderboardArray = JSON.parse(storedLeaderboard);
+        return leaderboardArray;
+    } else {
+        leaderBoardArray = [];
+    }
+    return leaderboardArray;
+}
+
+
 
 function showLeaderBoard() {
     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
@@ -136,8 +194,8 @@ function showLeaderBoard() {
     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
     record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
     var runningString = "";
-    
-    for (var i = 0; i < leaderBoard.length; i ++) {
+
+    for (var i = 0; i < leaderBoard.length; i++) {
         runningString += leaderBoard.user + " " + leaderBoard.time
     }
     console.log(runningString, "i am here!")
