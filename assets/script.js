@@ -142,6 +142,7 @@ const submitButton = document.querySelector("#submit-button");
 const inputElement = document.querySelector("#initials");
 
 submitButton.addEventListener("click", storeScore);
+submitButton.setAttribute("hidden", true);
 
 function storeScore(event) {
     event.preventDefault();
@@ -249,6 +250,7 @@ function checkAnswer() {
 // We start with a button labelled "start" prompting user to start the quiz
 startButton.addEventListener("click", function () {
     startButton.setAttribute("hidden", true)
+    submitButton.addEventListener("click", storeScore);
     countDown(5);
     displayQuestion();
 
