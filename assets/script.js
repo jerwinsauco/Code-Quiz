@@ -198,8 +198,6 @@ function renderLeaderboard() {
 }
 
 
-
-
 function showLeaderBoard() {
     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
     var newRecord = {
