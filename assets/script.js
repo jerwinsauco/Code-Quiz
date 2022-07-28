@@ -8,6 +8,7 @@ var startButton = document.getElementById("btn")
 var index = 0;
 var record = document.querySelector(".record")
 var localRecord = JSON.parse(localStorage.getItem('leaderBoard')) || [];
+var scoreEl = document.getElementById("scoreEl")
 
 const QBANK = [
     {
@@ -125,11 +126,12 @@ function displayQuestion() {
 //     choiceText.textContent = "";
 // }
 
+
 function endQuiz() {
     clearInterval(timeUser);
     questionText.textContent = "";
     choiceText.textContent = "";
-    score.textContent = time;
+    scoreEl.textContent = timer;
 }
 
 const submitButton = document.querySelector("#submit-button");
@@ -198,23 +200,23 @@ function renderLeaderboard() {
 
 
 
-// function showLeaderBoard() {
-//     var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
-//     var newRecord = {
-//         user: fullName,
-//         time: timer
-//     }
-//     localRecord.push(newRecord)
-//     //save user and time to local storage
-//     localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
-//     record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
-//     var runningString = "";
+function showLeaderBoard() {
+    var leaderBoard = JSON.parse(window.localStorage.getItem("leaderBoard"))
+    var newRecord = {
+        user: fullName,
+        time: timer
+    }
+    localRecord.push(newRecord)
+    //save user and time to local storage
+    localStorage.setItem('leaderBoard', JSON.stringify(localRecord))
+    record.textContent = "User: " + newRecord.user + " scores " + newRecord.time
+    var runningString = "";
 
-//     for (var i = 0; i < leaderBoard.length; i++) {
-//         runningString += leaderBoard.user + " " + leaderBoard.time
-//     }
-//     console.log(runningString, "i am here!")
-// }
+    for (var i = 0; i < leaderBoard.length; i++) {
+        runningString += leaderBoard.user + " " + leaderBoard.time
+    }
+    console.log(runningString, "i am here!")
+}
 
 function checkAnswer() {
     var chosenAnswer = this.getAttribute('class')
