@@ -188,7 +188,7 @@ function renderLeaderboard() {
     for (let i = 0; i < sortedLeaderboardArray.length; i++) {
         let leaderboardEntry = sortedLeaderboardArray[i];
         let newListItem = document.createElement("li");
-        newListItem.textContent = 
+        newListItem.textContent =
             leaderboardEntry.initials + " - " + leaderboardEntry.score;
         highscoreList.append(newListItem);
 
@@ -241,11 +241,6 @@ function checkAnswer() {
         displayQuestion()
     }
 }
-
-
-
-
-
 
 // We start with a button labelled "start" prompting user to start the quiz
 startButton.addEventListener("click", function () {
