@@ -98,29 +98,29 @@ function displayQuestion() {
         endQuiz()
         showLeaderBoard()
     } else {
-    console.log(QBANK[index].prompt)
-    var question = QBANK[index].prompt;
-    var choices = QBANK[index].choices;
-    console.log(question)
-    console.log("HEYYY")
-    questionText.textContent = question
-    choiceText.textContent = "";
-    Object.entries(choices).forEach(([key, val]) => {
-        console.log(key); // the name of the current key.
-        console.log(val); // the value of the current key.
-        //create a blank button for each of of the choices
-        var btn = document.createElement('button');
-        //display each choice on the button
-        btn.textContent = key + ': ' + val
-        //add class to button
-        btn.classList.add(key)
-        //append the button to choiceText div
-        choiceText.appendChild(btn)
-        //click on an answer
-        btn.onclick = checkAnswer;
-   
-    });
-}
+        console.log(QBANK[index].prompt)
+        var question = QBANK[index].prompt;
+        var choices = QBANK[index].choices;
+        console.log(question)
+        console.log("HEYYY")
+        questionText.textContent = question
+        choiceText.textContent = "";
+        Object.entries(choices).forEach(([key, val]) => {
+            console.log(key); // the name of the current key.
+            console.log(val); // the value of the current key.
+            //create a blank button for each of of the choices
+            var btn = document.createElement('button');
+            //display each choice on the button
+            btn.textContent = key + ': ' + val
+            //add class to button
+            btn.classList.add(key)
+            //append the button to choiceText div
+            choiceText.appendChild(btn)
+            //click on an answer
+            btn.onclick = checkAnswer;
+
+        });
+    }
 }
 
 
@@ -249,7 +249,8 @@ function checkAnswer() {
 
 // We start with a button labelled "start" prompting user to start the quiz
 startButton.addEventListener("click", function () {
-    startButton.setAttribute("hidden", true)
+    startButton.setAttribute("hidden", true);
+    submitButton.setAttribute("hidden", false);
     submitButton.addEventListener("click", storeScore);
     countDown(5);
     displayQuestion();
