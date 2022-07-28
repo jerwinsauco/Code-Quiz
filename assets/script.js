@@ -94,6 +94,10 @@ function countDown() {
 }
 
 function displayQuestion() {
+    if (index === QBANK.length) {
+        endQuiz()
+        showLeaderBoard()
+    } else {
     console.log(QBANK[index].prompt)
     var question = QBANK[index].prompt;
     var choices = QBANK[index].choices;
@@ -114,9 +118,9 @@ function displayQuestion() {
         choiceText.appendChild(btn)
         //click on an answer
         btn.onclick = checkAnswer;
-
+   
     });
-
+}
 }
 
 
@@ -213,7 +217,7 @@ function showLeaderBoard() {
     for (var i = 0; i < leaderBoard.length; i++) {
         runningString += leaderBoard.user + " " + leaderBoard.time
     }
-    console.log(runningString, "i am here!")
+    // console.log(runningString, "i am here!")
 }
 
 function checkAnswer() {
@@ -233,7 +237,7 @@ function checkAnswer() {
         }
         timeText.innerText = "Time: " + timer + " seconds remaining";
     }
-    if (index == QBANK.length) {
+    if (index === QBANK.length) {
         endQuiz()
         showLeaderBoard()
     } else {
