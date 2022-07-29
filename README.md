@@ -39,3 +39,7 @@ This is created by Jerwin Sauco. This work is made to supplement requirement of 
 ## Badges
 
 The author completed 4 weeks of bootcamp. No badges can be presented other than being a student of bootcamp.
+
+## Limitations 
+
+The author would like to inform the grader that limitiations of this application. First of, it is the author's intent to provide users the ability to have the choice at the end of the quiz (timer = 0 or exhausted QBANK) to submit there score. Once users decided to submit score, users will then be shown with the leaderboard showing other users name and scores recorded. The leaderboard is meant to be sorted from highest to lowest for data organization. However, due to author's inexperience to the field of javascript and JSON led to this failure to provide a more polished and functional application. 
