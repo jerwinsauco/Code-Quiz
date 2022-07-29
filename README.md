@@ -25,7 +25,7 @@ When the countdown timer turns 0 (zero) or when all questions are presented the 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
     ```md
-    ![alt text](assets/images/screenshot.png)
+    ![alt text](assets/images/Untitled_%20Jul%2028%2C%202022%2010_50%20PM.gif)
     ```
 
 ## Credits
