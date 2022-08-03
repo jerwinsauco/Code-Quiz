@@ -75,7 +75,7 @@ function userName() {
 
     document.getElementById("user").innerHTML = fullName;
 }
-userName()
+
 
 var timer = 5;
 // Timer starts after pressing btn
@@ -136,17 +136,18 @@ function endQuiz() {
     questionText.textContent = "";
     choiceText.textContent = "";
     scoreEl.textContent = timer;
+    userName()
 }
 
 const submitButton = document.querySelector("#submit-button");
-const inputElement = document.querySelector("#initials");
+const inputElement = document.querySelector("#user");
 
 // need to ask TA how to hide button and show at end of the quiz!!
 submitButton.addEventListener("click", storeScore);
 
 function storeScore(event) {
     event.preventDefault();
-    event.preventDefault();
+    // event.preventDefault();
 
     // check for input
     if (!inputElement.value) {
